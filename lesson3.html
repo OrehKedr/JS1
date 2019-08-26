@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //Задание 1.
+    var writePrimeNumbers = function(limit){
+      var count = count2 = 2;
+      var isComposite = false;
+      while (count <= limit) {
+        while (count2 < count){
+          if (count % count2 == 0){
+            isComposite = true;
+            break;
+          }          
+          count2++;
+        }
+        if (!isComposite){
+          console.log(count);
+        }
+        isComposite = false;
+        count2 = 2;
+        count++;
+      }
+    }
+    writePrimeNumbers(100);
+    
+    //Задание 2, 3.
+    var product1 = {name: "book", price: "2.45"};
+    var product2 = {name: "headphones", price: "15"};
+    var basket = [product1, product2];
+    
+    var calcBasket = function(basket){
+      var result = 0;
+      for (var product of basket){
+        result += parseFloat(product["price"]);
+      }
+      return result;
+    }
+    console.log("Товаров на сумму: " + calcBasket(basket) + " у.е.");
+    
+    //Задание 4.
+    for (var count = 0; count < 10; console.log(count++)){};
+    
+    for (var count = 1; count <= 20; count++){
+      var str = "";
+      for (var count2 = 1; count2 <= count; count2++)
+        str += "x";
+      console.log(str+"\n");
+    }
+    
+  </script>
+</body>
+</html>
