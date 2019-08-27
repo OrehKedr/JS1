@@ -11,7 +11,7 @@
       var count = count2 = 2;
       var isComposite = false;
       while (count <= limit) {
-        while (count2 < count){
+        while (count2 < count / 2){
           if (count % count2 == 0){
             isComposite = true;
             break;
@@ -45,10 +45,8 @@
     //Задание 4.
     for (var count = 0; count < 10; console.log(count++)){};
     
-    for (var count = 1; count <= 20; count++){
-      var str = "";
-      for (var count2 = 1; count2 <= count; count2++)
-        str += "x";
+    for (var count = 1, str = ""; count <= 20; count++){
+      str += "x";
       console.log(str+"\n");
     }
     
