@@ -78,6 +78,8 @@
       return a * b;
     }
     function division(a, b){
+      if (b == 0)
+        return NaN;
       return a / b;
     }
     
@@ -96,6 +98,16 @@
       }
     }
     console.log("Результат выполнения функции mathOperation() составил: " + mathOperation());
+    
+    //Задание ###8
+    function power(val, pow){
+      if (pow == 0)
+        return 1;
+      if (pow == 1)
+        return val;
+      return val * power(val, --pow);
+    }
+    console.log(power(6,7));
 
   </script>
 </body>
