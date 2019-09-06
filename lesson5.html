@@ -37,6 +37,7 @@
       for (var i = 0; i < tCells.length; i++){
         tCells[i].style.width = "100px";
         tCells[i].style.height = "100px";
+        tCells[i].style.textAlign = "center";
       }
       
       var tRows = document.querySelectorAll("tr");      
@@ -56,7 +57,6 @@
       for (var i = 1; i < sideTop.length - 1; i++){
         sideTop[i].innerText = legendX[i-1];
         sideTop[i].style.textTransform = "uppercase";
-        sideTop[i].style.textAlign = "center";
         sideTop[i].style.transform = "rotate(180deg)";
         sideTop[i].style.borderBottom = "1px solid black";
         sideTop[i].style.boxSizing = "border-box";
@@ -65,7 +65,6 @@
       for (var i = 1; i < sideBot.length - 1; i++){
         sideBot[i].innerText = legendX[i-1];
         sideBot[i].style.textTransform = "uppercase";
-        sideBot[i].style.textAlign = "center";
         sideBot[i].style.borderTop = "1px solid black";
         sideBot[i].style.boxSizing = "border-box";
       }
@@ -73,19 +72,39 @@
       for (var i = 1; i < tRows.length - 1; i ++){
         var sideLeft = tRows[i].children[0];
         sideLeft.innerText = legendY[tRows.length - 2 - i];
-        sideLeft.style.textAlign = "center";
         sideLeft.style.borderRight = "1px solid black";
         sideLeft.style.boxSizing = "border-box";
         
         var sideRight = tRows[i].children[9]
-        sideRight.innerText = legendY[tRows.length - 2 - i];       
-        sideRight.style.textAlign = "center";
+        sideRight.innerText = legendY[tRows.length - 2 - i];
         sideRight.style.transform = "rotate(180deg)";
         sideRight.style.borderLeft = "1px solid black";
         sideRight.style.boxSizing = "border-box";
       }
       
       //TODO: расставить фигуры
+    var orderBlackFigure = [rook = "&#9820;", knight = "&#9822;", bishop = "&#9821;", queen="&#9819;", king="&#9818;", bishop = "&#9821;", knight = "&#9822;", rook =  "&#9820;"];
+    
+    var orderWhiteFigure = [rook = "&#9814;", knight = "&#9816;", bishop = "&#9815;", queen="&#9813;", king="&#9812;", bishop = "&#9815;", knight = "&#9816;", rook =  "&#9814;"];
+      
+    var rankingBlack = tRows[1].children;
+    var rankingBlackPawns = tRows[2].children;
+    for (var i = 1; i < rankingBlack.length - 1; i ++){
+      rankingBlack[i].innerHTML = orderBlackFigure[i-1];
+      rankingBlackPawns[i].innerHTML = 	"&#9823;";
+      rankingBlack[i].style.fontSize = "xx-large";
+      rankingBlackPawns[i].style.fontSize = "xx-large";
+    }
+    
+    var rankingWhite = tRows[8].children;
+    var rankingWhitePawns = tRows[7].children;
+    for (var i = 1; i < rankingBlack.length - 1; i ++){
+      rankingWhite[i].innerHTML = orderWhiteFigure[i-1];
+      rankingWhitePawns[i].innerHTML = "&#9817;";
+      rankingWhite[i].style.fontSize = "xx-large";
+      rankingWhitePawns[i].style.fontSize = "xx-large";
+    }
+      
     })();
 
   </script>
