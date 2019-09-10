@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Gallery</title>
+</head>
+<body>
+  <div class="container" style="width: 800px; padding: 100px 0; margin: 0 auto">
+    <div id="big_picture"></div>
+	<div id="gallery">
+		<img id="image_1" src="img/sandals_min_1.png" alt="sandals_min_1">
+		<img id="image_2" src="img/sandals_min_2.png" alt="sandals_min_2">
+		<img id="image_3" src="img/sandals_min_3.png" alt="sandals_min_3">
+	</div>
+  </div>
+  <script>
+    function init(){
+      var images = document.getElementsByTagName("img");
+      for (var i = 0; i < images.length; i++) {
+        images[i].onclick = changeBigPicture;
+      }
+    }
+    function changeBigPicture(event){
+      var divDomElement = document.getElementById("big_picture");
+      divDomElement.innerHTML = "";
+      var eventElement = event.target;
+      var imageNameParts = eventElement.id.split("_");
+      var src = "img/" + "sandals_max_" + imageNameParts[1] + ".png";
+      var imageDomElement = document.createElement("img");
+      imageDomElement.onerror = onErrorHandler;
+      imageDomElement.src = src;
+      divDomElement.appendChild(imageDomElement);
+    }
+    function onErrorHandler(){
+      this.parentElement.innerHTML = "";
+      alert("Большая фотография не найдена.");
+    }
+    window.onload = init;
+
+  </script>
+</body>
+</html>
