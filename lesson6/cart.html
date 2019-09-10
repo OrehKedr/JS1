@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Cart</title>
+</head>
+<body>
+  <div class="container" style="width: 990px; padding: 100px 0; margin: 0 auto">
+    <div class="catalog">
+      <h2>Каталог</h2>
+    </div>
+    <div class="cart">
+      <h2>Корзина</h2>
+      <div class="cart-list"></div>
+    </div>
+  </div>
+  <script>
+    const IMG_FOLDER = "img/"
+    var product1 = {id: 1, title: "Сланцы 1", photo: "sandals_max_1", price: 1.5},
+        product2 = {id: 2, title: "Сланцы 2", photo: "sandals_max_2", price: 2.2},
+        product3 = {id: 3, title: "Сланцы 3", photo: "sandals_max_3_err", price: 1.8};
+    var catalog = [product1, product2, product3];
+    
+    //Пример заполнения объекта корзина
+    //var cart = [{id: 1, title: "Сланцы 1", price: 1.5, quantity: 2}];
+    var cart = [];
+    
+    var divCatalog = document.getElementsByClassName("catalog")[0];
+    var divCartList = document.getElementsByClassName("cart-list")[0];
+    
+    for (var product of catalog){
+      var divCatalogElement = document.createElement("div");
+      
+      var titleCatalogElement = document.createElement("h4");
+      titleCatalogElement.innerText = product.title;
+      
+      var imgCatalogElement = document.createElement("img");
+      imgCatalogElement.alt = product.photo;
+      imgCatalogElement.src = IMG_FOLDER + product.photo + ".png";
+      imgCatalogElement.className = "product-img";
+      
+      var priceCatalogElement = document.createElement("span");
+      priceCatalogElement.innerText = "Цена: " + product.price;
+      priceCatalogElement.className = "price-value";
+      
+      var btnCatalogElement = document.createElement("input");
+      btnCatalogElement.id = product.id;      
+      btnCatalogElement.type = "button";
+      btnCatalogElement.value = "Добавить в корзину";
+      btnCatalogElement.className = "add-product";      
+      btnCatalogElement.addEventListener("click", addProductToCart.bind(event, product));
+      
+      divCatalogElement.appendChild(titleCatalogElement);
+      divCatalogElement.appendChild(imgCatalogElement);
+      divCatalogElement.appendChild(priceCatalogElement);
+      divCatalogElement.appendChild(btnCatalogElement);
+      divCatalog.appendChild(divCatalogElement);
+    }
+    
+    function addProductToCart(newProduct, event){
+      var id = newProduct.id;
+      
+      if (cart.length != 0){
+        for (var product of cart){
+          if (product.id == id){
+            product.quantity += 1;
+          }
+        }
+        if (!isAlreadyInCart(newProduct)){
+          cart.push({id: newProduct.id, title: newProduct.title, photo: newProduct.photo, price: newProduct.price, quantity: 1});
+        }
+      } else {
+        cart.push({id: newProduct.id, title: newProduct.title, photo: newProduct.photo, price: newProduct.price, quantity: 1});
+      }      
+      console.log(cart);
+      
+      //Отрисовка корзины
+      divCartList.innerHTML = "";
+      for (var i = 0; i < cart.length; i++){
+        var divCartElement = document.createElement("div");
+      
+        var titleCartElement = document.createElement("h4");
+        titleCartElement.innerText = cart[i].title;
+
+        var imgCartElement = document.createElement("img");
+        imgCartElement.alt = cart[i].photo;
+        imgCartElement.src = IMG_FOLDER + cart[i].photo + ".png";
+        imgCartElement.className = "product-img";
+
+        var quantityCartElement = document.createElement("span");
+        quantityCartElement.innerText = "Количество: " + cart[i].quantity;
+        quantityCartElement.className = "price-value";
+
+        var totalCartElement = document.createElement("span");
+        totalCartElement.innerText = "Итого: " + (cart[i].quantity * cart[i].price);
+        totalCartElement.className = "price-value";
+
+        divCartElement.appendChild(titleCartElement);
+        divCartElement.appendChild(imgCartElement);
+        divCartElement.appendChild(quantityCartElement);
+        divCartElement.appendChild(totalCartElement);
+        divCartList.appendChild(divCartElement);
+      }
+    }
+    function isAlreadyInCart(product){
+      for (var item of cart){
+        if (item.id == product.id) return true;
+      }
+      return false;
+    }
+    
+  </script>
+</body>
+</html>
