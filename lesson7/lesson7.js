@@ -72,8 +72,6 @@ function respawn() {
  * Движение змейки
  */
 function move() {
-  var scoreElem = document.querySelector('.score');
-  scoreElem.value = score;
   //Устанавливаем указатель головы змейки
   var new_unit = translateHead();
   // Проверки
@@ -166,6 +164,8 @@ function haveFood(unit) {
     check = true;
     createFood();
     score++;
+    var scoreElem = document.querySelector('.score');
+    scoreElem.value = score;
   }
   return check;
 }
