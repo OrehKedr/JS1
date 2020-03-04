@@ -1,0 +1,26 @@
+.catalog{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cart-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.catalog > h2,
+.cart > h2{
+  display: block;
+  width: 100%;
+}
+.product-img{
+  display: block;
+}
+.price-value{
+  display: inline-block;
+  font-size: 22px;
+}
+.add-product{
+  height: 26px;
+  margin-left: 12px;
+}

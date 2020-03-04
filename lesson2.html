@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson2</title>
+</head>
+<body>
+  <script>
+    //Задание 1.
+    var a = 1, b = 1, c, d;
+    c = ++a; alert(c);           // 2 Префиксная форма инкремента. Префиксная форма возвращает новое значение, т.е. 1+1=2.
+    d = b++; alert(d);           // 1 Постфиксная форма инкремента. Постфиксная форма возвращает в выражение старое(до увеличения числа) значение, т.е. d = 1. При этом значение переменной b увеличивается на единицу.
+    c = (2+ ++a); alert(c);      // 5 Ранее в коде (в строке 11) ++a = 2. После подстановки значений переменных получается: c = (2+ 3) = 5
+    d = (2+ b++); alert(d);      // 4 Ранее в коде (в строке 12) b++ = 2. Постфиксная форма возвращает в выражение старое(до увеличения числа) значение, т.е. b = 2. После подстановки значений переменных получается: d = (2+ 2) = 4. При этом значение переменной b увеличивается на единицу.
+    alert(a);                    // 3 Ранее в коде (в строке 13) ++a = 3.
+    alert(b);                    // 3 Ранее в коде (в строке 14) b++ = 3.
+    
+    //Задание 2.
+    var a = 2;
+    var x = 1 + (a *= 2);
+    console.log(x); //5 Выражение в скобках выполняется первым, т.е a *= 2 = a*2 = 2*2 = 4. Далее x = 1+4 = 5.
+    
+    //Задание 3.
+    var a = 1, b = 2;
+    a = +prompt("А присвоить: ", a);
+    b = +prompt("B присвоить: ", b);
+    if (a * b < 0){
+      console.log(a + b);
+    } else if (a >= 0 && b >= 0){
+      console.log(a - b);
+    } else {
+      console.log(a * b);
+    }
+    
+    //Задание ###4
+    a = Math.random() * 15;
+    switch(Math.round(a)){
+      case 1:
+        console.log(1);
+      case 2:
+        console.log(2);
+      case 3:
+        console.log(3);
+      case 4:
+        console.log(4);
+      case 5:
+        console.log(5);
+      case 6:
+        console.log(6);
+      case 7:
+        console.log(7);
+      case 8:
+        console.log(8);
+      case 9:
+        console.log(9);
+      case 10:
+        console.log(10);
+      case 11:
+        console.log(11);
+      case 12:
+        console.log(12);
+      case 13:
+        console.log(13);
+      case 14:
+        console.log(14);
+      case 15:
+        console.log(15);
+    }
+    
+    //Задание ###5
+    function sum(a, b){
+      return a + b;
+    }
+    function diff(a, b){
+      return a - b;
+    }
+    function composition(a, b){
+      return a * b;
+    }
+    function division(a, b){
+      if (b == 0)
+        return NaN;
+      return a / b;
+    }
+    
+    function mathOperation(arg1 = 1, arg2 = 2, operation = "sum"){
+      switch(operation){
+        case "sum":
+          return sum(arg1, arg2);
+        case "diff":
+          return diff(arg1, arg2);
+        case "composition":
+          return composition(arg1, arg2);
+        case "division":
+          return division(arg1, arg2);
+        default:
+          return "Проверьте название операции и повторите попытку";
+      }
+    }
+    console.log("Результат выполнения функции mathOperation() составил: " + mathOperation());
+    
+    //Задание ###8
+    function power(val, pow){
+      if (pow == 0)
+        return 1;
+      if (pow == 1)
+        return val;
+      return val * power(val, --pow);
+    }
+    console.log(power(6,7));
+
+  </script>
+</body>
+</html>

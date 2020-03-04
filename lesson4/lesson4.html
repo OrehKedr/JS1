@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //Задание 1.
+    var input = prompt("Введите число от 0 до 999", 0);
+    
+    (function transformStrToObj(str){
+      var units, dozens, hundreds, obj = {};
+      
+      if (isNaN(str) || (str.length > 3)){
+        console.log("Введённое значение не соответствует условию");
+        return null;
+      }
+
+      hundreds = str.charAt(str.length-3);
+      dozens = str.charAt(str.length-2);
+      units = str.charAt(str.length-1);
+      
+      obj.hundreds = hundreds ? hundreds : 0;
+      obj.dozens = dozens ? dozens : 0;
+      obj.units = units;
+
+      console.log(obj);
+    })(input);
+    
+    //Вариант 2
+    (function transformStrToObj(str){
+      var units, dozens, hundreds, obj = {};
+      
+      if (isNaN(str) || (str.length > 3)){
+        console.log("Введённое значение не соответствует условию");
+        return null;
+      }
+
+      hundreds = parseInt(str / 100);
+      dozens = parseInt(str % 100 / 10);
+      units = parseInt(str % 10);
+      
+      obj.hundreds = hundreds;
+      obj.dozens = dozens;
+      obj.units = units;
+
+      console.log(obj);
+    })(input);
+    
+  </script>
+</body>
+</html>
